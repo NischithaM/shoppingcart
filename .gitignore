@@ -1,2 +1,4 @@
 build
 .settings
+WebContent/WEB-INF/lib
+

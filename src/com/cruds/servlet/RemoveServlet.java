@@ -41,32 +41,31 @@ public class RemoveServlet extends HttpServlet {
 		List<Product> list=(List<Product>) session.getAttribute("cart");
 		
 		list.remove(0);
-		
+
+		if(list.size()==0)
+		{
+			session.removeAttribute("cart");
+		}
 		System.out.println(list);
 		
 		for(Product product1:list)
 		{
-			int sum=0,totalsum=0,overall=0,dis=25,discount=(100-dis),tax=100;
+			 int sum=0,totalsum=0,overall=0,tax=10,dis=25,discount=(100-dis),tax2=100+tax;
 				
-			if(list.size()==0)
-			{
-				sum=0;
-				totalsum=0;
-			}
-			else
-			{
-			sum=sum+Integer.parseInt(product1.getPrice());
-			session.setAttribute("total", Integer.toString(sum));
 			
-			totalsum=totalsum+discount*Integer.parseInt(product1.getPrice())/100;
-			overall=totalsum+tax;
-			session.setAttribute("dis", String.valueOf(dis)+"%");
-			session.setAttribute("totalsum", Integer.toString(totalsum));
-			session.setAttribute("tax", String.valueOf(tax));
-			session.setAttribute("overall", Integer.toString(overall));
-			}
+				sum+=Integer.parseInt(product1.getPrice());
+				session.setAttribute("total", Integer.toString(sum));
+				
+				totalsum+=discount*Integer.parseInt(product1.getPrice())/100;
+				overall=(totalsum*tax2)/100;
+				session.setAttribute("dis", String.valueOf(dis)+"%");
+				session.setAttribute("totalsum", Integer.toString(totalsum));
+				session.setAttribute("tax", String.valueOf(tax)+"%");
+				session.setAttribute("overall", String.valueOf(overall));
 			
 		}
+		
+		
 		
 		RequestDispatcher rd=request.getRequestDispatcher("cart.jsp");
 		
