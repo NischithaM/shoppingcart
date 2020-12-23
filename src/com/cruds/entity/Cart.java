@@ -7,13 +7,18 @@ import java.util.List;
 
 public class Cart {
 
-
+	private Product product;
 	private static int sum=0;
 	
 	private static List<Product> list=new ArrayList<Product>();
 	private static ArrayList<Product> items;
 
-	public static List<Product> addToCart(String itemid ,String itemname,String itemprice,String itemqty,String image)
+	public Cart(Product product) {
+		super();
+		this.product = product;
+	}
+
+	/*public static List<Product> addToCart(String itemid ,String itemname,String itemprice,String itemqty,String image)
 	{
 
 		int qty=0,total=0;
@@ -41,6 +46,15 @@ public class Cart {
 		}
 		return list;
 	}
-
-	
+*/
+	public List<Product> addToCart(List<Product> list,Product p )
+	{
+		if(list  == null)
+		{
+			list=new ArrayList<>();
+		}
+		list.add(p);
+		return list;
+		
+	}
 }

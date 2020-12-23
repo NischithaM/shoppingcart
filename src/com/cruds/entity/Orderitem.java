@@ -7,6 +7,11 @@ public class Orderitem
 
 	private int orderId;
 	private int itemId;
+	public int getItemId() {
+		return itemId;
+	}
+
+
 	private String emailid;
 	private String itemname;
 	private String itemprice;
@@ -17,6 +22,36 @@ public class Orderitem
 	
 	public Orderitem(int orderId) {
 		this.orderId = orderId;
+	}
+
+	public Orderitem(int orderId, int itemId, String itemname, String itemprice, String itemquantity, Date orderdate,
+			String orderstatus) {
+		super();
+		this.orderId = orderId;
+		this.itemId = itemId;
+		this.itemname = itemname;
+		this.itemprice = itemprice;
+		this.itemquantity = itemquantity;
+		this.orderdate = orderdate;
+		this.orderstatus = orderstatus;
+	}
+
+	public Orderitem(int orderId, Date orderdate, String orderstatus) {
+		super();
+		this.orderId = orderId;
+		this.orderdate = orderdate;
+		this.orderstatus = orderstatus;
+	}
+
+	public Orderitem(int orderId, String itemname, String itemprice, String itemquantity, Date orderdate,
+			String orderstatus) {
+		super();
+		this.orderId = orderId;
+		this.itemname = itemname;
+		this.itemprice = itemprice;
+		this.itemquantity = itemquantity;
+		this.orderdate = orderdate;
+		this.orderstatus = orderstatus;
 	}
 
 	public Orderitem(int orderId, String itemname, String itemprice, String itemquantity) {
@@ -36,6 +71,11 @@ public class Orderitem
 	}
 
 	
+	public Orderitem(String emailid) {
+		super();
+		this.emailid = emailid;
+	}
+
 	public String getOrderstatus() {
 		return orderstatus;
 	}

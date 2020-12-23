@@ -6,6 +6,10 @@ public class User {
 	private String emalid;
 	private String password;
 	
+	public User() {
+		super();
+	}
+
 	public User(String username, String emalid, String password) {
 		super();
 		this.username = username;

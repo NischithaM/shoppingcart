@@ -1,7 +1,7 @@
 package com.cruds.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,19 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.cruds.database.UserDAO;
-import com.cruds.entity.User;
+import com.cruds.database.ProductDAO;
+import com.cruds.entity.Orderitem;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class ViewOrdersServlet
  */
-public class LoginServlet extends HttpServlet {
+public class OrderListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public OrderListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doPost(request, response);
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -40,27 +40,17 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		String action=request.getParameter("ACTION");
 		HttpSession session=request.getSession();
-		String emailid=request.getParameter("emailid");
-		String password=request.getParameter("password");
-		session.setAttribute("emailid",emailid);
-	
-	/*	UserDAO dao=new UserDAO();
-		User u=new User(emailid, password);*/
+		String emailid=(String) session.getAttribute("emailid");
+		List<Orderitem> list2 = (List<Orderitem>) new ProductDAO().vieworders(emailid);
+		session.setAttribute("ORDER_LIST", list2);
+		System.out.println("view"+list2);
 		
-		User user =new UserDAO().login(emailid,password);
-		if (user != null) {
-
-			session.setAttribute("MESSAGE","LOGIN SUCCESS");
-			RequestDispatcher rd=request.getRequestDispatcher("cart2.jsp");
-			rd.forward(request, response);
-		} 
-		else{	
-				request.setAttribute("MESSAGE", "");
-				RequestDispatcher rd=request.getRequestDispatcher("login.jsp");
-				rd.forward(request, response);
-		}
+		RequestDispatcher rd=request.getRequestDispatcher("orderlist.jsp");
+		rd.forward(request, response);
+		
+		
 	}
 
 }

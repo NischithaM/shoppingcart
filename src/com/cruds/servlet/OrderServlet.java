@@ -60,17 +60,20 @@ public class OrderServlet extends HttpServlet {
 		List<Product> cart = (List<Product>) session.getAttribute("cart");
 		
 		Orderitem o=new Orderitem(emailid, DateUtil.getCurrentDate(), status, overall);
-		session.setAttribute("cart", cart);
-		
+	
 		if(dao.order(cart,o) != null)
 		{
 			Orderitem oid=dao.getOrderid(emailid);
 			System.out.println(oid);
 			session.setAttribute("MESSAGE","your order is placed!!!"+oid);
+			session.removeAttribute("cart");
+			//session.setAttribute("orderid",String.valueOf(oid));
 			RequestDispatcher rs=request.getRequestDispatcher("ordersuccess.jsp");
 			rs.forward(request, response);
 			
 		}
 	
+	
+		
 	}
 }

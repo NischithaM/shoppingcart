@@ -29,7 +29,6 @@
 				<ul id="menuItems">
 					<li><a href="index.html">Home</a></li>
 					<li><a href="products.jsp">Products</a></li>
-					<li><a href="orderlist.jsp">View Oders</a></li>
 					<li><a href=" AboutUs.jsp">About</a></li>
 					<li><a href="http://www.crudsinfotech.com/">Contact</a></li>
 					<li><a href="signup.jsp">Account</a></li>
@@ -128,8 +127,8 @@
 				 -->
 			</tr>
  
-<%} %>
-			<%} %>	
+	<%}
+	%><%} %>
 		</table>
 
 				
@@ -137,6 +136,8 @@
 		<div class="total-price">
 
 			<table>
+			<% List<Product> cart2=(List<Product>)session.getAttribute("cart"); 
+	 if(cart2!=null){%>
 				<tr>
 					<td class="value-button" id="decrease" onclick="decreaseValue()">SubTotal</td>
 					<td><%String total=(String)session.getAttribute("total");
@@ -259,6 +260,7 @@
 		}
 	</script>
 
-
+<%} %>
+			
 </body>
 </html>

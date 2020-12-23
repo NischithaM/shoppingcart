@@ -10,9 +10,6 @@
 </head>
 <body>
 	
-
-
-
 	<div class="container">
 		
 		<div class="navbar">
@@ -25,11 +22,10 @@
 				<li><a href="products.jsp">Products</a></li>
 				<li><a href="AboutUs.jsp">About</a></li>
 				<li><a href="http://www.crudsinfotech.com/">Contact</a></li>
-				<li><a href="login.jsp">Login</a></li>
-				<li><a href="register.jsp">Register</a></li>
+				
 			</ul>
 		</nav>
-		<a href="file:///C:/Users/Umesh%20suryavanshi/Desktop/web/cart.html"><img src="images/cart.png" width="30px" height="30px"></a>
+		<a href="cart.jsp"><img src="images/cart.png" width="30px" height="30px"></a>
 		<img src="images/menu.png" class="menu" onclick="menutoggle()">
 	</div>
 	</div>

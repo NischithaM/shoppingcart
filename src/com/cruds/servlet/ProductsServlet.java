@@ -1,7 +1,7 @@
 package com.cruds.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,19 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.cruds.database.UserDAO;
-import com.cruds.entity.User;
+import com.cruds.database.ProductDAO;
+import com.cruds.entity.Orderitem;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class ProductsServlet
  */
-public class LoginServlet extends HttpServlet {
+public class ProductsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public ProductsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,6 +32,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 		doPost(request, response);
 	}
 
@@ -40,27 +41,15 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		String action=request.getParameter("ACTION");
 		HttpSession session=request.getSession();
-		String emailid=request.getParameter("emailid");
-		String password=request.getParameter("password");
-		session.setAttribute("emailid",emailid);
-	
-	/*	UserDAO dao=new UserDAO();
-		User u=new User(emailid, password);*/
+		String orderid=(String) session.getAttribute("orderid");
 		
-		User user =new UserDAO().login(emailid,password);
-		if (user != null) {
-
-			session.setAttribute("MESSAGE","LOGIN SUCCESS");
-			RequestDispatcher rd=request.getRequestDispatcher("cart2.jsp");
-			rd.forward(request, response);
-		} 
-		else{	
-				request.setAttribute("MESSAGE", "");
-				RequestDispatcher rd=request.getRequestDispatcher("login.jsp");
-				rd.forward(request, response);
-		}
+		List<Orderitem> prodlist=new ProductDAO().orderdetails(orderid);
+		session.setAttribute("PROD_LIST", prodlist);
+		
+		RequestDispatcher rd=request.getRequestDispatcher("productslist.jsp");
+		rd.forward(request, response);
 	}
 
 }

@@ -11,28 +11,30 @@ import com.cruds.exception.NCException;
 
 public class UserDAO {
 	
-	public boolean login(User l)
+	public User login(String emailid,String password)
 	{
 		
 		String sql="select emailid,password from user where emailid=? and password=?";
-		boolean found=false;
+		User user=null;
 		
+		User u=null;
 		try(Connection con=DBConnectionManager.getConnection())
 		{
 			PreparedStatement ps=con.prepareStatement(sql);
-			ps.setString(1, l.getEmalid());
-			ps.setString(2, l.getPassword());
+			ps.setString(1, emailid);
+			ps.setString(2,password);
 			ResultSet rs=ps.executeQuery();
 			if(rs != null && rs.next())
 			{
-				found =true;
+				/*u=new User(rs.getString(1),rs.getString(2));*/
+				user=new User(rs.getString(1), rs.getString(2));
 			}
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return found;
+		return user;
 		
 	}
 	

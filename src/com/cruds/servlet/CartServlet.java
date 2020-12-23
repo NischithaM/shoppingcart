@@ -46,14 +46,18 @@ public class CartServlet extends HttpServlet {
 		System.out.println(itemid);
 		
 		List<Product> cart = (List<Product>) session.getAttribute("cart");
-		if(cart==null)
+		Product p=new Product(itemid, itemname, itemprice, itemqty, itemimage);
+		Cart c=new Cart(p);
+		cart=c.addToCart(cart, p);
+		
+		/*if(cart==null)
 		{
 			session.setAttribute("MSG", "YOUR CART IS EMPTY");
 			cart=new ArrayList<>();
 			
-		}
-		cart=Cart.addToCart(itemid, itemname, itemprice, itemqty, itemimage);
-		
+		}*/
+		/*cart=Cart.addToCart(itemid, itemname, itemprice, itemqty, itemimage);
+		System.out.println("cartttttt"+cart);*/
 		session.setAttribute("cart", cart);
 		
       int sum=0,totalsum=0,overall=0,tax=10,dis=25,discount=(100-dis),tax2=100+tax;
@@ -74,7 +78,7 @@ public class CartServlet extends HttpServlet {
 		
 		RequestDispatcher rd=request.getRequestDispatcher("cart.jsp");
 		rd.forward(request, response);
-
+		
 	}
 	
 	

@@ -90,12 +90,12 @@ public class ProductDAO {
 		return o;
 	}
 	
-	public List<Orderitem> orders(String email)
+	public List<Orderitem> vieworders(String email)
 	{
 		Orderitem o=null;
 		
 		List<Orderitem> list=new ArrayList<Orderitem>();
-		String sql="select o.orderid,oi.itemname,oi.itemprice,oi.itemquantity from orders o ,orderlist oi where o.orderid=oi.orderid and o.emailid=?";
+		String sql="select o.orderid,oi.itemid,oi.itemname,oi.itemprice,oi.itemquantity,o.orderdate,o.orderstatus from orders o ,orderitem oi where  o.orderid=oi.orderid and o.emailid=?";
 		try(Connection con=DBConnectionManager.getConnection())
 		{
 			PreparedStatement ps=con.prepareStatement(sql);
@@ -104,8 +104,7 @@ public class ProductDAO {
 			
 			while(rs.next())
 			{
-				o=new Orderitem(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4));
-				
+				o=new Orderitem(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDate(6),rs.getString(7));
 				list.add(o);
 				System.out.println("list"+o);
 			}
@@ -117,4 +116,30 @@ public class ProductDAO {
 		return list;
 	}
 
+	
+	public List<Orderitem> orderdetails(String orderid)
+	{
+		Orderitem o=null;
+		
+		List<Orderitem> list=new ArrayList<Orderitem>();
+		String sql="select orderid,itemname,itemprice,itemquantity from orderitem where orderid=?";
+		try(Connection con=DBConnectionManager.getConnection())
+		{
+			PreparedStatement ps=con.prepareStatement(sql);
+			ps.setString(1, orderid);
+			ResultSet rs=ps.executeQuery();
+			
+			while(rs.next())
+			{
+				o=new Orderitem(rs.getInt(1), rs.getString(2),rs.getString(3), rs.getString(4));
+				list.add(o);
+				System.out.println("list"+o);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
 }

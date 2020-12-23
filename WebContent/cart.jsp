@@ -201,11 +201,12 @@
 			</table>
 			
 		</div>
-		<a href="login.jsp"><button type="submit" class="btn-2">Buy Now</button></a>
+		<form action="LoginServlet" method="post" ><button type="submit" class="btn-2">Buy Now</button></a></form>
 		
-	<%} %>
+	
 	</div>
  
+<%} %>
 
 	<div class="footer">
 		<div class="cat">
@@ -268,7 +269,6 @@
 
 		}
 	</script>
-
 
 </body>
 </html>

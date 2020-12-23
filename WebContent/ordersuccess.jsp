@@ -15,139 +15,71 @@
 
 </head>
 <body>
+	<div class="container">
 
-<%String msg=(String)session.getAttribute("MESSAGE") ;%>
-
-
-<%if(msg!=null) 
-{
-%>
-<h1>
-<%=msg %></h1>
-<%} %>
-
-<%String orderid=(String)session.getAttribute("orderid");
-if(orderid != null)
-{%>
-<h1>
-<%=orderid%>
-<%} %></h1>
-	
-
-
-	<%-- <div class="small-cat cart-page">
-		<table>
-
-			<tr>
-				<th>Product</th>
-				<th>Qunatity</th>
-				
-			</tr>
-			
-			<tr>
-			
-				<td>
-							<p><%String name=(String)session.getAttribute("itemname");
-							if(name != null)
-							{%>
-							<%=name %>
-							<%} %>
-						</p>
-
-							<small class="value-button" id="increase"
-								onclick="increaseValue();"><%String price=(String)session.getAttribute("itemprice");
-						if(price != null)
-						{%>
-						<%=price %>
-						<%} %>
-								</small>
-							<br> <a href="#">Remove</a>
-						</div>
-					</div>
-				</td>
-				<td><input type="number" id="quantity" name="quantity"
-					value=<%String qty=(String)session.getAttribute("itemqty");
-						if(qty != null)
-						{%>
-						<%=qty %>
-						<%} %>></td>
-			</tr>
-
-		</table>
-
-
-
-		
-			
-		</div> --%>
-		<!-- <a href=""><button type="submit" class="btn-2">LOGOUT</button></a> -->
-		
-
-	</div>
-
-
-	<div class="footer">
-		<div class="cat">
-			<div class="row">
-
-				<div class="footer-col-1">
-					<h3>Download our App</h3>
-					<p>Download App for Andriod and ios mobile phone.</p>
-					<div class="applogo">
-						<img src="images/play-store.png"> <img
-							src="images/app-store.png">
-
-					</div>
-				</div>
-				<div class="footer-col-2">
-					<img src="logo.png">
-					<p>different lines.</p>
-				</div>
-
-				<div class="footer-col-1">
-					<h3>Useful links</h3>
-					<ul>
-						<li>Coupons</li>
-						<li>Blog Post</li>
-						<li>Return Policy</li>
-						<li>Join Affiliate</li>
-					</ul>
-
-				</div>
-
-				<div class="footer-col-1">
-					<h3>Follow us</h3>
-					<ul>
-						<li>Facebook</li>
-						<li>Twitter</li>
-						<li>Instagram</li>
-						<li>YouTube</li>
-					</ul>
-
-				</div>
-
+		<div class="navbar">
+			<div class="logo">
+				<a
+					href="file:///C:/Users/Umesh%20suryavanshi/Desktop/web/index.html"><img
+					src="logo.png" width="69px"></a>
 			</div>
+			<nav>
+				<ul id="menuItems">
+					<li><a href="index.html">Home</a></li>
+					<li><a href=" AboutUs.jsp">About</a></li>
+					<li><a href="http://www.crudsinfotech.com/">Contact</a></li>
+					<li><a href="orderlist.jsp">View Orders</a>
+				</ul>
+			</nav>
+			<a href="cart.jsp"><img src="images/cart.png" width="30px"
+				height="30px"></a> <img src="images/menu.png" class="menu"
+				onclick="menutoggle()">
 		</div>
-		<hr>
-		<p class="copyright">Sprith</p>
 	</div>
+	<div class="small-cat cart-page">
+		<%
+			String msg = (String) session.getAttribute("MESSAGE");
+		%>
 
-	<script src="new.js"></script>
 
-	<script type="text/javascript">
-		var menuItems = document.getElementById("menuItems");
-		menuItems.style.maxHeight = "0px";
-
-		function menutoggle() {
-			if (menuItems.style.maxHeight == "0px") {
-				menuItems.style.maxHeight = "200px"
-			} else {
-				menuItems.style.maxHeight = "0px"
+		<%
+			if (msg != null) {
+		%>
+		<center>
+		<h1>
+			<%=msg%></h1>
+		<%
 			}
+		%>
+		</center>
+		<%-- <%
+			String orderid = (String) session.getAttribute("orderid");
+			if (orderid != null) {
+		%>
+		<h1>
+			<%=orderid%>
+			<%
+				}
+			%>
+		</h1> --%>
 
-		}
-	</script>
 
 
+
+		<script src="new.js"></script>
+
+		<script type="text/javascript">
+			var menuItems = document.getElementById("menuItems");
+			menuItems.style.maxHeight = "0px";
+
+			function menutoggle() {
+				if (menuItems.style.maxHeight == "0px") {
+					menuItems.style.maxHeight = "200px"
+				} else {
+					menuItems.style.maxHeight = "0px"
+				}
+
+			}
+		</script>
 </body>
 </html>

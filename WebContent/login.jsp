@@ -1,58 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Shopping cart</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>All products website | store</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-    
-    
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<title>Shopping cart</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All products website | store</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css"
+	href="vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<link rel="stylesheet" type="text/css"
+	href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css"
+	href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="css/util.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 </head>
 <body>
-    
-    
-    <div class="container">
-		
+
+
+	<div class="container">
+
 		<div class="navbar">
-		<div class="logo">
-			<a href="Index.html"><img src="" width="69px"></a>
+			<div class="logo">
+				<a href="Index.html"><img src="" width="69px"></a>
+			</div>
+			<nav>
+				<ul id="menuItems">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="products.jsp">Products</a></li>
+					<li><a href="AboutUs.jsp">About</a></li>
+					<li><a href=" http://www.crudsinfotech.com/">Contact</a></li>
+					<li><a href="signup.jsp">Account</a></li>
+				</ul>
+			</nav>
+			<a href="cart.jsp"><img src="images/cart.png" width="30px"
+				height="30px"></a> <img src="images/menu.png" class="menu"
+				onclick="menutoggle()">
 		</div>
-		<nav>
-			<ul id="menuItems">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="products.jsp">Products</a></li>
-				<li><a href="AboutUs.jsp">About</a></li>
-				<li><a href=" http://www.crudsinfotech.com/">Contact</a></li>
-				<li><a href="signup.jsp">Account</a></li>
-			</ul>
-		</nav>
-		<a href="cart.jsp"><img src="images/cart.png" width="30px" height="30px"></a>
-		<img src="images/menu.png" class="menu" onclick="menutoggle()">
 	</div>
-	</div>
-	
+
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
@@ -60,100 +68,97 @@
 					<img src="images/img-01.png" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form" action="LoginServlet" method="post">
-					<span class="login100-form-title">
-						 LOGIN
-					</span>
-                    
-                    
+				<form class="login100-form validate-form" action="LoginServlet"
+					method="post">
+					<span class="login100-form-title"> LOGIN </span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="emailid" placeholder="Email">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
+
+
+					<div class="wrap-input100 validate-input"
+						data-validate="Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="emailid"
+							placeholder="Email"> <span class="focus-input100"></span>
+						<span class="symbol-input100"> <i class="fa fa-envelope"
+							aria-hidden="true"></i>
 						</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="password" placeholder="Password">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
+					<div class="wrap-input100 validate-input"
+						data-validate="Password is required">
+						<input class="input100" type="password" name="password"
+							placeholder="Password"> <span class="focus-input100"></span>
+						<span class="symbol-input100"> <i class="fa fa-lock"
+							aria-hidden="true"></i>
 						</span>
 					</div>
-					
+
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							LOGIN
-						</button>
+						<button class="login100-form-btn">LOGIN</button>
 					</div>
-					
-						<%
-		String msg = (String) request.getAttribute("MESSAGE");
-		if (msg != null) {
-	%>
-	<style>
+
+					<%
+						String msg = (String) request.getAttribute("MESSAGE");
+						if (msg != null) {
+					%>
+					<style>
 h1 {
-  font-family: 'Roboto Mono', monospace;
-font-family: 'Spectral SC', serif;
-  color: green;
+	font-family: 'Roboto Mono', monospace;
+	font-family: 'Spectral SC', serif;
+	color: green;
 }
 </style>
-<h1>
-	
-		<%=msg%></h1>	
-					
-	
+					<h1>
 
-	<%
-		}
-	%>
+						<%=msg%></h1>
 
-					
+
+
+					<%
+						}
+					%>
+
 
 					<div class="text-center p-t-136">
-						<a class="txt2" href="signup.jsp">
-							back to Sign In
-							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						<a class="txt2" href="signup.jsp"> back to Sign In <i
+							class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-	
-	
 
-	
-<!--===============================================================================================-->	
+
+
+
+	<!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/bootstrap/js/popper.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/tilt/tilt.jquery.min.js"></script>
-	<script >
+	<script>
 		$('.js-tilt').tilt({
-			scale: 1.1
+			scale : 1.1
 		})
 	</script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="js/main.js"></script>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-   <!-- <div class="footer">
+
+
+
+
+
+
+
+
+
+
+
+	<!-- <div class="footer">
 	<div class="cat">
 		<div class="row">
 			
@@ -204,20 +209,19 @@ font-family: 'Spectral SC', serif;
     
 </div>-->
 
-<script type="text/javascript">
-	var menuItems = document.getElementById("menuItems");
-	menuItems.style.maxHeight = "0px";
+	<script type="text/javascript">
+		var menuItems = document.getElementById("menuItems");
+		menuItems.style.maxHeight = "0px";
 
-	function menutoggle(){
-		if(menuItems.style.maxHeight == "0px"){
-			menuItems.style.maxHeight = "200px"
+		function menutoggle() {
+			if (menuItems.style.maxHeight == "0px") {
+				menuItems.style.maxHeight = "200px"
+			} else {
+				menuItems.style.maxHeight = "0px"
+			}
+
 		}
-		else{
-			menuItems.style.maxHeight = "0px"
-		}
-	
-	}
-</script>
+	</script>
 
 
 </body>
